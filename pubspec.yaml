@@ -1,0 +1,107 @@
+name: group_expense_splitter
+description: >
+  Hisaab — An offline-first group expense splitter for trips and travel.
+  Split costs with friends on treks, road trips, and adventures.
+publish_to: 'none'
+version: 1.0.0+1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Dart / Flutter SDK Constraints
+#
+# Lower bound  ≥3.3.0 — required for:
+#   • Dart records, patterns (used implicitly in newer Flutter widgets)
+#   • ColorScheme tokens: surfaceContainerHighest, surfaceContainerHigh,
+#     outlineVariant, onSurfaceVariant, surfaceTint (Material 3, Flutter 3.10+)
+#   • AnimatedSlide widget (Flutter 3.0+)
+#   • SliverAppBar.large constructor (Flutter 3.0+)
+# ─────────────────────────────────────────────────────────────────────────────
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RUNTIME DEPENDENCIES
+# ─────────────────────────────────────────────────────────────────────────────
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── State Management ──────────────────────────────────────────────────────
+  # Used in: ALL view files (Consumer<TripProvider>, context.read/watch)
+  provider: ^6.1.2
+
+  # ── Local Storage ─────────────────────────────────────────────────────────
+  # hive        → @HiveType / @HiveField annotations, Box<T>, HiveObject
+  #               Used in: member_model, expense_model, trip_model, trip_provider
+  # hive_flutter → Hive.initFlutter() extension (Flutter path resolver)
+  #               Used in: main.dart ONLY
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # ── Unique ID Generation ──────────────────────────────────────────────────
+  # Used in: trip_provider.dart — _uuid.v4() for Trip, Member, Expense IDs
+  uuid: ^4.4.0
+
+  # ── List Swipe Actions ────────────────────────────────────────────────────
+  # Used in: expenses_tab.dart — Slidable, ActionPane, SlidableAction
+  #          (swipe-left on expense tiles to reveal Edit / Delete buttons)
+  flutter_slidable: ^3.1.0
+
+  # ── Number & Date Formatting ──────────────────────────────────────────────
+  # Used in: trip_card.dart        → NumberFormat('#,##0.00')
+  #          expenses_tab.dart     → NumberFormat + DateFormat('MMM d')
+  #          balances_tab.dart     → NumberFormat('#,##0')
+  #          add_edit_trip_sheet   → DateFormat('MMM d, yyyy')
+  intl: ^0.19.0
+
+  # Flutter's default icon font (already included, kept for completeness)
+  cupertino_icons: ^1.0.8
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DEV DEPENDENCIES
+# ─────────────────────────────────────────────────────────────────────────────
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # ── Hive Code Generation ──────────────────────────────────────────────────
+  # hive_generator → generates the TypeAdapter classes (.g.dart files)
+  # build_runner   → the build system that runs hive_generator
+  #
+  # NOTE: The .g.dart files for all 3 models are already hand-written and
+  # included in the project (Part 2). You do NOT need to run build_runner
+  # unless you delete the .g.dart files and regenerate them.
+  #
+  # If you ever modify @HiveField annotations, run:
+  #   flutter pub run build_runner build --delete-conflicting-outputs
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.9
+
+  flutter_lints: ^4.0.0
+
+  # ── App Icon Generator ────────────────────────────────────────────────────
+  flutter_launcher_icons: ^0.13.1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FLUTTER CONFIG
+# ─────────────────────────────────────────────────────────────────────────────
+flutter:
+  uses-material-design: true
+
+  # Uncomment and populate when you add image assets (e.g., onboarding graphics)
+  # assets:
+  #   - assets/images/
+
+  # Uncomment to add a custom font (e.g., from Google Fonts package instead)
+  # fonts:
+  #   - family: MyFont
+  #     fonts:
+  #       - asset: assets/fonts/MyFont-Regular.ttf
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FLUTTER LAUNCHER ICONS CONFIG
+# ─────────────────────────────────────────────────────────────────────────────
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21

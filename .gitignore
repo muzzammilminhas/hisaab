@@ -1,0 +1,88 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IDE files
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Dart / Flutter / Pub
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# Generated Flutter platform files with local machine paths
+android/local.properties
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
+ios/Flutter/.last_build_id
+macos/Flutter/ephemeral/
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+
+# Android / Gradle generated files
+.gradle/
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# Apple generated files
+ios/Pods/
+macos/Pods/
+**/xcuserdata/
+**/*.xcuserstate
+**/DerivedData/
+
+# Build artifacts and release packages
+*.apk
+*.aab
+*.ipa
+*.app
+*.exe
+*.msix
+*.zip
+
+# Symbolication and obfuscation output
+app.*.symbols
+app.*.map.json
+
+# Secrets, signing keys, and environment files
+.env
+.env.*
+*.keystore
+*.jks
+*.p8
+*.p12
+*.pem
+*.key
+key.properties
+google-services.json
+GoogleService-Info.plist
+
+# Local databases and generated app data
+*.db
+*.sqlite
+*.sqlite3
+*.hive
+*.lock
